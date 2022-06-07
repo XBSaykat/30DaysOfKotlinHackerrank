@@ -2,15 +2,20 @@ import java.util.*
 import kotlin.math.round
 
 fun main(){
-    val scanner = Scanner(System.`in`)
-    val actualMeal: Double = scanner.nextDouble()
-    val tips: Int = scanner.nextInt()
-    val tax: Int = scanner.nextInt()
+    val meal_cost = readLine()!!.trim().toDouble()
 
-    val tipPercent: Double = (tips*actualMeal)/100
-    val taxPercent: Double = (tax*actualMeal)/100
+    val tip_percent = readLine()!!.trim().toInt()
 
-    val ans = round(actualMeal+tipPercent+taxPercent)
+    val tax_percent = readLine()!!.trim().toInt()
 
-    println(ans.toInt())
+    solve(meal_cost, tip_percent, tax_percent)
+}
+
+fun solve(mealCost: Double, tipPercent: Int, taxPercent: Int): Unit {
+    val tips = (tipPercent / 100.00) * mealCost
+    val tax = (taxPercent/100.00) * mealCost
+    val totalCost = mealCost +tips + tax
+    val intTotalCost: Int = round(totalCost).toInt()
+    println(intTotalCost)
+
 }
